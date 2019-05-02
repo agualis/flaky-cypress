@@ -1,0 +1,59 @@
+.main {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lang {
+    width: 20%;
+    margin-left: 90%;
+    margin-right: 5%;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+h5 {
+   margin-bottom: 0px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+  list-style-type: none;
+}
+
+a {
+  color: #42b983;
+}
+
+.delete {
+   color: pink;
+   cursor: pointer;
+}
+
+.delete:hover {
+   color: red;
+}
+
+.item {
+    text-align: left;
+}
+
+.container {
+    margin-top: 3rem;
+}
