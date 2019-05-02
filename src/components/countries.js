@@ -215,5 +215,6 @@ export const countries = [
 ]
 
 export function countryLabel(countryKey) {
+  if (!countryKey) return ''
   return countries.filter(country => country.key === countryKey)[0].text
 }

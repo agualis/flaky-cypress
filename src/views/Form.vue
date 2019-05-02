@@ -22,11 +22,11 @@
                   :disabled="saved">Submit
       </sui-button>
     </sui-form>
-    <sui-card id="user-info" v-if="saved">
+    <sui-card id="person-info" v-if="saved">
       <sui-card-content>
         <sui-card-header>
           <sui-icon name="user" color="green"/>
-          USER CREATED!
+          PERSON CREATED!
         </sui-card-header>
         <sui-card-description>
           {{ createdUser }}
@@ -57,7 +57,7 @@
     methods: {
       async save() {
         this.loading = true
-        await sleep(3000)
+        await sleep(1000)
         this.saved = true
         this.loading = false
       }

@@ -1,34 +1,42 @@
 it('creates a user', () => {
   cy.visit('/form')
-  fillUser()
+  cy.get('#first-name').type('Juana')
+  cy.get('#last-name').type('Molina')
+  selectFirstCountry()
+
   cy.get('#save').click()
-  assertUserCreated()
+
+  cy.contains('Argentina')
+  cy.contains('Juana')
+  cy.contains('Molina')
 })
 
-function fillUser() {
-  cy.get('#first-name').type('Laura')
-  cy.get('#last-name').type('Palmer')
+//cy.get('#person-info').contains('Argentina')
+//selectCountry('Argentina')
+
+function selectFirstCountry() {
+  // Dangerous usage of get command chaining
   cy.get('#country').click().get('.selected.item').first().click({ force: true })
 }
 
-function assertUserCreated() {
-  cy.contains('Argentina')
-  cy.contains('Laura')
-  cy.contains('Palmer')
+function selectFirstCountry2() {
+  // Proper chaining find command instead to search in the scope of the first get result
+  cy.get('#country').click().find('.selected.item').click()
 }
 
-function fillUser2() {
-  cy.get('#first-name').type('Laura')
-  cy.get('#last-name').type('Palmer')
-  cy.get('#user-form').within(() => {
-    cy.get('#country').click().get('.selected.item').first().click()
+function selectFirstCountry3() {
+  // Using within to limit search to the stope of a concrete form
+   cy.get('#user-form').within(() => {
+    cy.get('#country').click().get('.selected.item').click()
   })
 }
 
-function fillUser3() {
-  cy.get('#first-name').type('Laura')
-  cy.get('#last-name').type('Palmer')
-  cy.get('#country').click().find('.selected.item').first().click({ force: true })
+function selectCountry(countryText) {
+  selectByText('#country', countryText)
+}
+
+function selectByText(selector, text) {
+  cy.get(selector).click().find('input').type(text).type("{downarrow}{enter}")
 }
 
 export const log = message => cy.task('log', message)
